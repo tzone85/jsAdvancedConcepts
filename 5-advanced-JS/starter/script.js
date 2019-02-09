@@ -1,6 +1,6 @@
 // Function constructor
 
-var Person  = function(name, yearOfBirth, job){
+/*var Person  = function(name, yearOfBirth, job){
     this.name = name;
     this.yearOfBirth = yearOfBirth;
     this.job = job;
@@ -25,3 +25,44 @@ jane.calculateAge();
 console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
+*/
+
+// Primitives and objects
+
+var a = 23;
+var b = a;
+a = 46;
+console.log(a);
+console.log(b);
+
+var obj1 = {
+    name: 'John',
+    age: 26
+}
+
+// objects
+var obj2 = obj1;
+obj1.age = 30;
+console.log(obj1.age);
+console.log(obj2.age);
+
+// functions
+
+var age = 27;
+var obj = {
+    name: 'Thando',
+    city: 'Cape Town'
+};
+
+function change(a, b) {
+    a = 30;
+    b.city = 'San Francisco';
+    b.name = 'Mncedi';
+}
+
+change(age, obj);
+
+console.log('age: '+age);
+console.log(obj.city);
+console.log(obj.name);
+
