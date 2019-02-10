@@ -29,7 +29,7 @@ console.log(mark.lastName);
 
 // Primitives and objects
 
-var a = 23;
+/*var a = 23;
 var b = a;
 a = 46;
 console.log(a);
@@ -65,4 +65,46 @@ change(age, obj);
 console.log('age: '+age);
 console.log(obj.city);
 console.log(obj.name);
+*/
+
+// Passing functions as arguments
+
+var years = [1990, 1965, 1937, 2005, 1985];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+
+    for (var i = 0; i < arr.length; i++){
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(el) {
+    return 2019 - el;
+}
+
+
+function isFullAge(el) {
+    return el >= 18;
+}
+
+function maxHeartRate(personAge) {
+
+    if (personAge >= 18 && personAge <= 81){
+        return Math.round(206.9 - (0.67 * personAge));
+    } else {
+        return -1;
+    }
+
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullAges =arrayCalc(ages, isFullAge);
+var heartRates = arrayCalc(ages, maxHeartRate);
+
+
+console.log('Ages: '+ages);
+console.log('Full Age: '+fullAges);
+console.log('Heart Rates: '+heartRates);
 
