@@ -69,6 +69,7 @@ console.log(obj.name);
 
 // Passing functions as arguments
 
+/*
 var years = [1990, 1965, 1937, 2005, 1985];
 
 function arrayCalc(arr, fn) {
@@ -107,4 +108,35 @@ var heartRates = arrayCalc(ages, maxHeartRate);
 console.log('Ages: '+ages);
 console.log('Full Age: '+fullAges);
 console.log('Heart Rates: '+heartRates);
+*/
 
+// Functions returning functions
+
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function (name) {     // anonymous function for it has no name
+            console.log(name + ', can you please explain what UX design is?');
+        }
+    } else if (job === 'teacher') {
+        return function (name) {
+            console.log(name + ', what subject do you teach?');
+        }
+    } else {
+        return function(name){
+            console.log('Hello '+ name + ', what do you do?');
+        }
+    }
+
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+teacherQuestion('John');
+
+var designerQuestion = interviewQuestion('designer');
+designerQuestion('Thando');
+
+
+// a different way of doing the same thing.
+
+interviewQuestion('teacher')('Mark');
+interviewQuestion('designer')('Mncedi');
