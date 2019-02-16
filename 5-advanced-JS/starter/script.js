@@ -112,7 +112,7 @@ console.log('Heart Rates: '+heartRates);
 
 // Functions returning functions
 
-function interviewQuestion(job) {
+/*function interviewQuestion(job) {
     if (job === 'designer') {
         return function (name) {     // anonymous function for it has no name
             console.log(name + ', can you please explain what UX design is?');
@@ -140,3 +140,53 @@ designerQuestion('Thando');
 
 interviewQuestion('teacher')('Mark');
 interviewQuestion('designer')('Mncedi');
+*/
+
+// Closures
+
+/*function retirement(retirementAge) {
+    var leftYrs = ' years left before retirment';
+    return function(yearOfBirth) {
+        var age = 2019 - yearOfBirth;
+        console.log((retirementAge - age) + leftYrs)
+    }
+}
+
+var retirementUs = retirement(66);
+var retirementGermany = retirement(65);
+var retirementIsland = retirement(67);
+var retirementSouthAfrica = retirement(65);
+
+retirementUs(1990);
+retirementSouthAfrica(1985);
+retirementIsland(1985);
+retirementGermany(2000);
+retirementGermany(1993);
+retirementGermany(1980);
+// retirement(66)(1985);
+
+retirementIsland(1954);
+*/
+
+// same example using closures
+
+function interviewQuestion(job) {
+
+    return function (name) {
+        if (job === 'designer') {
+            {     // anonymous function for it has no name
+                console.log(name + ', can you please explain what UX design is?');
+            }
+        } else if (job === 'teacher') {
+            {
+                console.log(name + ', what subject do you teach?');
+            }
+        } else {
+            {
+                console.log('Hello ' + name + ', what do you do?');
+            }
+        }
+    }
+}
+
+interviewQuestion('Mongameli')('Mncedi');
