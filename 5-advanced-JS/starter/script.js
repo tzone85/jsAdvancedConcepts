@@ -111,6 +111,8 @@ console.log('Heart Rates: '+heartRates);
 */
 
 // Functions returning functions
+
+/*function interviewQuestion(job) {
     if (job === 'designer') {
         return function (name) {     // anonymous function for it has no name
             console.log(name + ', can you please explain what UX design is?');
@@ -124,7 +126,6 @@ console.log('Heart Rates: '+heartRates);
             console.log('Hello '+ name + ', what do you do?');
         }
     }
-
 }
 
 var teacherQuestion = interviewQuestion('teacher');
@@ -132,13 +133,13 @@ teacherQuestion('John');
 
 var designerQuestion = interviewQuestion('designer');
 designerQuestion('Thando');
-
+*/
 
 // a different way of doing the same thing.
 
 interviewQuestion('teacher')('Mark');
 interviewQuestion('designer')('Mncedi');
-*/
+
 // Closures
 
 /*function retirement(retirementAge) {
