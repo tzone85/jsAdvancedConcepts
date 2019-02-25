@@ -1,33 +1,36 @@
 // IFEE creates a new scope, that cannot be accessed from the outside of this function
 
-// Module pattern returns an OBJECT containing all of the functions that we want to be public. i.e. those that we want to be accessable from outside the function
+// Budget Controller
 var budgetController = (function() {
-    var x = 23;
 
-    var add = function (a) {
-        return x + a;
-    }
-
-    // this object gets assigned to the budget. (the closure below)
-    return {
-        publicTest: function (b) {
-            return add(b);
-        }
-    }
 })();
 
+// UI Controller
 var uiController = (function () {
     // TODO
 })();
 
+// GLOBAL APP Controller
 var controller = (function (budgetCtrl, uiCtrl) {
 
-    var z = budgetCtrl.publicTest(5);
+    var ctrlAddItem = function(){
 
-    return {
-        anotherPublic: function () {
-            return (z);
-        }
+        // TODO
+        // 1. GET THE FILLED INPUT DATA
+        // 2. ADD THE ITEM TO THE BUDGET CONTROLLER
+        // 3. ADD THE ITEM TO THE UI
+        // 4. Calculate the budget
+        // 5. Display the budget on the UI
+        console.log('It works');
     }
+
+    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+
+    // global event listener when enter is pressed
+    document.addEventListener('keypress', function (event) {
+        if (event.keyCode === 13 || event.which === 13){
+            ctrlAddItem();
+        }
+    });
 
 })(budgetController, uiController);
