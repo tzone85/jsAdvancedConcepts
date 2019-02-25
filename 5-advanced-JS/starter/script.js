@@ -137,8 +137,8 @@ designerQuestion('Thando');
 
 // a different way of doing the same thing.
 
-interviewQuestion('teacher')('Mark');
-interviewQuestion('designer')('Mncedi');
+// interviewQuestion('teacher')('Mark');
+// interviewQuestion('designer')('Mncedi');
 
 // Closures
 
@@ -167,7 +167,7 @@ retirementIsland(1954);
 */
 
 // same example using closures
-
+/*
 function interviewQuestion(job) {
 
     return function (name) {
@@ -189,3 +189,30 @@ function interviewQuestion(job) {
 
 interviewQuestion('Mongameli')('Mncedi');
 
+*/
+
+// Bind, call and apply
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function (style, timeOfDay) {
+        if (style === 'formal'){
+            console.log("Good "+ timeOfDay + " gentlemen! I'm "+ this.name + " I'm a "+ this.job + " and I'm of age "+ this.age +" years old.");
+        } else if (style === 'friendly'){
+            console.log("Hey, whats up? I'm "+ this.name + " I'm a "+ this.job + " and I'm of age "+ this.age +" years old.");
+        } else {
+            console.log();
+        }
+    }
+};
+
+let emily = {
+    name: 'Emily',
+    age: 36,
+    job: 'designer'
+};
+
+john.presentation('formal', 'afternoon');
+john.presentation.call(emily, 'friendly', 'morning');
