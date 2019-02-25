@@ -26,7 +26,38 @@ var budgetController = (function() {
             exp: 0,
             inc: 0
         }
-    }
+    };
+
+    return {
+        addItem: function (type, des, val) {
+            var newItem, ID;
+
+            // ID = last ID + 1
+            // create new id
+            if (data.allItems[type].length > 0){
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
+            }
+
+            // create new item based on 'inc' or 'exp' type
+            if (type === 'exp'){
+                newItem = new Expense(ID, des, val);
+            } else if (type === 'inc') {
+                newItem = new Income(ID, des, val);
+            }
+
+            // push it into our datastructure
+            data.allItems[type].push(newItem);
+
+            // return the new element
+            return newItem;
+        },
+
+        testing: function () {
+            console.log(data);
+        }
+    };
 
 })();
 
@@ -44,7 +75,7 @@ var uiController = (function () {
       getInput : function () {
 
           return {
-              type: document.querySelector(DOMstrings.inputType).value, // Will be either inc or exp
+              type: document.querySelector(DOMstrings.inputType).value, // Will be either inc or exp for income and expense respectively
               description: document.querySelector(DOMstrings.inputDescription).value,
               value: document.querySelector(DOMstrings.inputValue).value
           };
@@ -77,13 +108,15 @@ var controller = (function (budgetCtrl, uiCtrl) {
 
     var ctrlAddItem = function(){
 
-        // TODO
+        var input, newItem;
         // 1. GET THE FILLED INPUT DATA
 
-        var input = uiCtrl.getInput();
-        console.log(input);
+        input = uiCtrl.getInput();
 
         // 2. ADD THE ITEM TO THE BUDGET CONTROLLER
+
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+
         // 3. ADD THE ITEM TO THE UI
         // 4. Calculate the budget
         // 5. Display the budget on the UI
