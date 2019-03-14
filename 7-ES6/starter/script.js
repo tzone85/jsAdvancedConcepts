@@ -143,12 +143,27 @@ var box5 = {
  }
  box5.clickMe();
 
- // ES6
+ // ES6 shares the lexical function of the 'this' key word
 
- var box6 = {
+//  var box6 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function() {
+        
+//         const self = this;
+
+//         document.querySelector('.green').addEventListener('click', () => {
+//             let str = 'This is box number '+ this.position +' and it is ' + this.color;
+//             alert(str);
+//         });
+//     }
+//  }
+//  box6.clickMe();
+// DuaneAccount01@@
+var box66 = {
     color: 'green',
     position: 1,
-    clickMe: function() {
+    clickMe: () => {
         
         const self = this;
 
@@ -158,4 +173,4 @@ var box5 = {
         });
     }
  }
- box6.clickMe();
+ box66.clickMe();
