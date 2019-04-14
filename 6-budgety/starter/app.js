@@ -129,6 +129,23 @@ var uiController = (function () {
 
         },
 
+        // clear input fields after enterting the data
+        clearFields: function(){
+          var fields, fieldsArray;
+          fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
+
+          // fields returns a list and not an array so lets slice to trick the computer into returning the list as an array in order to have access to the powerful array methods
+
+          fieldsArray = Array.prototype.slice.call(fields);
+
+          fieldsArray.forEach(function (current, index, array) {
+              current.value = "";
+          });
+
+          // set curser back to the first element in the list
+          fieldsArray[0].focus();
+        },
+
         // expose the private DOMStrings to the outside of UI Controller.
 
         getDOMstrings : function () {
@@ -168,6 +185,9 @@ var controller = (function (budgetCtrl, uiCtrl) {
         // 3. ADD THE ITEM TO THE UI
 
         uiCtrl.addListItem(newItem, input.type);
+
+        // 4. clear fields
+        uiCtrl.clearFields();
         // 4. Calculate the budget
         // 5. Display the budget on the UI
     };
