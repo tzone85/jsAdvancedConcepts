@@ -419,7 +419,7 @@ isFullAge6(19, 1990, 1999, 2004, 1965, 2000);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Default Parameters
-
+/*
 function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
 
     lastName === undefined ? lastName = 'Smith' : lastName = lastName;
@@ -446,6 +446,66 @@ function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = '
 
 var john6 = new SmithPerson('John', 1990);
 var emily6 = new SmithPerson('Emily', 1983, 'Mini', 'Xhosa');
+*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Maps
+
+const question = new Map();
+
+question.set('question', 'What is the official name of the latest major js version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct Answer');
+question.set(false, 'Wrong Answer, Please try again.');
+
+// to retrieve data
+
+console.log(question.get('question'));
+
+console.log(question.size);
+
+if (question.has(4)){
+    // question.delete(4)
+    // console.log('Answer 4 is here');
+}
+
+// question.clear();
+
+// question.forEach((value, key) =>
+//
+// console.log(`This is ${key}, and it's set to ${value}`));
+
+
+// for accessing the key as well as the value (use destructuring)
+for (let [key, value] of question.entries()){
+    if (typeof(key) === 'number') {
+        console.log(`Answer: ${key}: ${value}`);
+    }
+}
+
+const ans = parseInt(prompt('write the correct answer'));
+
+console.log(question.get(ans === question.get('correct')));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
