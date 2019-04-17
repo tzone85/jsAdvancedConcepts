@@ -504,7 +504,7 @@ var Person5 = function (name, yearOfBirth, job) {
 };
 
 Person5.prototype.calculateAge = function () {
-    var age = new Date().getFullYear - this.yearOfBirth;
+    var age = new Date().getFullYear() - this.yearOfBirth;
     console.log(age);
 };
 
@@ -519,7 +519,7 @@ class Person6 {
     }
 
     calculateAge() {
-        let age = new Date().getFullYear - this.yearOfBirth;
+        let age = new Date().getFullYear() - this.yearOfBirth;
         console.log(age);
     }
 
@@ -535,11 +535,29 @@ const john6 = new Person6('Thando6', 1990, 'teacher');
 Person6.greeting();
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Subclasses (continuing from the classes lecture above)
 
+// ES5
 
+var Athlete5 = function (name, yearOfBirth, job, olympicGames, medals) {
+    Person5.call(this, name, yearOfBirth, job);
+    this.olympicGames = olympicGames;
+    this.medals = medals;
+};
 
+// to connect the two function constructors in order to make the prototype chain work well
+Athlete5.prototype = Object.create(Person5.prototype);
 
+Athlete5.prototype.wonMedal = function() {
+    this.medals++;
+    console.log(this.medals);
+};
 
+var johnAthlete5 = new Athlete5('John', 1990, 'Swimmer', 3, 10);
+
+johnAthlete5.calculateAge();
+johnAthlete5.wonMedal();
 
 
 
