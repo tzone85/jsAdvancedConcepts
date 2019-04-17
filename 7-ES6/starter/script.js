@@ -450,7 +450,7 @@ var emily6 = new SmithPerson('Emily', 1983, 'Mini', 'Xhosa');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Maps
-
+/*
 const question = new Map();
 
 question.set('question', 'What is the official name of the latest major js version?');
@@ -490,8 +490,49 @@ for (let [key, value] of question.entries()){
 const ans = parseInt(prompt('write the correct answer'));
 
 console.log(question.get(ans === question.get('correct')));
+*/
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Classes (NB classes are not hoisted, so one needs to implement them first, and then call them.)
 
+//ES5
+
+var Person5 = function (name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+};
+
+Person5.prototype.calculateAge = function () {
+    var age = new Date().getFullYear - this.yearOfBirth;
+    console.log(age);
+};
+
+var john5 = new Person5('John5', 1990, 'Teacher');
+
+//ES6
+class Person6 {
+    constructor (name, yearOfBirth, job){
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge() {
+        let age = new Date().getFullYear - this.yearOfBirth;
+        console.log(age);
+    }
+
+    // adding a static method. this is not inherited by the class instances, so objects that we create for that class
+    // can be used as helper functions
+    static greeting() {
+        console.log('Hey there');
+    }
+}
+
+const john6 = new Person6('Thando6', 1990, 'teacher');
+
+Person6.greeting();
 
 
 
