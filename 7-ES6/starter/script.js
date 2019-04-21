@@ -496,7 +496,7 @@ console.log(question.get(ans === question.get('correct')));
 // Classes (NB classes are not hoisted, so one needs to implement them first, and then call them.)
 
 //ES5
-
+/*
 var Person5 = function (name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
@@ -546,6 +546,11 @@ var Athlete5 = function (name, yearOfBirth, job, olympicGames, medals) {
     this.medals = medals;
 };
 
+Person5.prototype.calculateAge = function () {
+    var age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(age);
+};
+
 // to connect the two function constructors in order to make the prototype chain work well
 Athlete5.prototype = Object.create(Person5.prototype);
 
@@ -558,9 +563,39 @@ var johnAthlete5 = new Athlete5('John', 1990, 'Swimmer', 3, 10);
 
 johnAthlete5.calculateAge();
 johnAthlete5.wonMedal();
+*/
 
+//ES6
+class Person6 {
+    constructor (name, yearOfBirth, job){
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
 
+    calculateAge() {
+        let age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+}
 
+class Athlete6 extends Person6 {
+    constructor(name, yearOfBirth, job, olympicGames, medals) {
+        super(name, yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+
+    wonMedals() {
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+const johnAthlete6 = new Athlete6('John6', 1990, 'swimmer', 3, 15);
+
+johnAthlete6.wonMedals();
+johnAthlete6.calculateAge();
 
 
 
