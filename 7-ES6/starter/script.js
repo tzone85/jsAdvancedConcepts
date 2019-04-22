@@ -1,176 +1,92 @@
-// Lecture about let and const
-/*
-// ES5
-var name5 = "Mncedi";
-var age5 = 23;
-name5 = "Mncedi Miller";
-console.log(name5);
-
-// ES6
-const name6 = "Mncedi";
-let age6 = 23;
-// name6 = 
-console.log(name6)
-
-// var in ES5 - Function scoped, ES6 Block scope
-
-// ES5
-function driversLicense5(passTest) {
-    if (passTest){
-        console.log(firstName);
-        var firstName = "John";
-        var yearOfBirth = 1990; 
+class Element {
+    constructor(name, buildYear) {
+        this.name = name;
+        this.buildYear = buildYear;
     }
-    console.log(firstName + ', born in '+ yearOfBirth + ', is now officially drive a car.')
 }
 
-driversLicense5(true);
-
-//ES6
-function driversLicense6(passTest) {
-    
-    // console.log(firstName);
-    let firstName;
-    const yearOfBirth = 1990;
-
-    if (passTest){
-        firstName = "John";
-        console.log(firstName + ', 6born in '+ yearOfBirth + ', 6is now officially drive a car.')
-    }    
-}
-
-driversLicense6(true);
-
-var i = 23;
-for (var i = 0; i < 5; i++){
-    console.log(i);
-}
-
-console.log(i);
-*/
-
-/////////////////////////////////////////////////////
-// Blocks and IIFEs
-/*
-// ES6
-{
-    const a = 1;
-    let b = 2;
-    var c = 3;
-}
-// console.log(a + b);
-console.log(c);
-
-(function() {
-    var c = 3;
-})();
-
-// console.log(c);
-*/
-
-////////////////////////////////////////////////////////////
-// Lecture: Strings
-
-/*
-let firstName = 'john';
-let lastName = 'smith';
-const yearOfBirth = 1990;
-
-function calcAge(year) {
-    return 2019 - year;
-}
-
-// ES5
-console.log('This is '+ firstName + ' '+ lastName + '. He was born in '+ yearOfBirth + '. Today, he is '+ calcAge(yearOfBirth) + 'years old');
-
-// ES6
-console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}, and today he is ${calcAge(yearOfBirth)} years old`);
-const fullName = `${firstName} ${lastName}`;
-
-console.log(fullName.startsWith('j'));
-console.log(fullName.endsWith('h'));
-console.log(fullName.includes('oh'));
-console.log(`${fullName} `.repeate(5));
-*/
-
-///////////////////////////////////////////////////////////////////////
-// Lecture Arrow Functions
-/*
-const years = [1990, 2000, 1985];
-
-// ES5 
-var ages5 = years.map( function(el) {
-    return 2019 - el;
-});
-console.log(ages5);
-
-// ES6
-
-let ages6 = years.map(el => 2019 - el);
-console.log(ages6);
-
-ages6 = years.map((el, index) => `age element ${index + 1} is: ${2019 - el}`);
-console.log(ages6);
-
-// more than one line in the code
-
-age6 = years.map((el, index) => {
-    const now = new Date().getFullYear();
-    const age = now - el;
-    return `Age element ${index + 1}: ${age}: `
-});
-
-console.log(age6);
-
-*/
-
-///////////////////////////////////////////////////////////////////////
-// Lecture Arrow Functions 2
-
-// ES5
-var box5 = {
-    color: 'green',
-    position: 1,
-    clickMe: function() {
-        
-        var self = this;
-
-        document.querySelector('.green').addEventListener('click', function(){
-            var str = 'This is box number '+ self.position +' and it is ' + self.color;
-            alert(str);
-        })
+class Park extends Element {
+    constructor(name, buildYear, area, numberOfTrees) {
+        super(name, buildYear);
+        this.area = area; // km^2
+        this.numberOfTrees = numberOfTrees;
     }
- }
- box5.clickMe();
 
- // ES6 shares the lexical function of the 'this' key word
+    treeDensity() {
+        const density = this.numberOfTrees / this.area;
 
-//  var box6 = {
-//     color: 'green',
-//     position: 1,
-//     clickMe: function() {
-        
-//         const self = this;
-
-//         document.querySelector('.green').addEventListener('click', () => {
-//             let str = 'This is box number '+ this.position +' and it is ' + this.color;
-//             alert(str);
-//         });
-//     }
-//  }
-//  box6.clickMe();
-// DuaneAccount01@@
-var box66 = {
-    color: 'green',
-    position: 1,
-    clickMe: () => {
-        
-        const self = this;
-
-        document.querySelector('.green').addEventListener('click', () => {
-            let str = 'This is box number '+ this.position +' and it is ' + this.color;
-            alert(str);
-        });
+        console.log(`${this.name} has a tree density of ${density} trees per square km`);
     }
- }
- box66.clickMe();
+}
+
+class Street extends Element {
+    constructor(name, buildYear, length, size = 3) {
+        super(name, buildYear);
+        this.length = length;
+        this.size = size;
+    };
+
+    classifyStreet() {
+        const classification = new Map();
+        classification.set(1, 'tiny');
+        classification.set(2, 'small');
+        classification.set(3, 'normal');
+        classification.set(4, 'big');
+        classification.set(5, 'huge');
+
+        console.log(`${this.name}, build ${this.buildYear}, is a ${classification.get(this.size)} street.`);
+    }
+}
+
+const allParks = [new Park('Green Park', 1987, 0.2, 215),
+                    new Park('National Park', 1894, 2.9, 3541),
+                    new Park('Oak Park', 1953, 0.4, 949)];
+
+const allStreets = [new Street('Ocean Avenue', 1999, 1.1, 4),
+                    new Street('Evergreen Street', 2008, 2.7, 2),
+                    new Street('4th Street', 2015, 0.8),
+                    new Street('Sunset Boulevard', 1982, 2.5)];
+
+function calc(arr) {
+
+    // used to reduce an array to a single value (from ES5)
+    const sum = arr.reduce((prev, curr, index) => prev  + curr, 0); // 0 is the accumilator. Where we want to start counting from. i.e. from 0
+
+    // use destructuring and return an array of 2 elements, then use destructuring to save these elements into two variables when calling this fxn
+    return [sum, sum/arr.length];
+}
+
+function reportPark(p) {
+    console.log('--------------PARKS REPORT---------------');
+
+    // Density
+    p.forEach(el => el.treeDensity());
+
+    // Average age
+
+    // using destructuring here
+
+    const ages = p.map(el => new Date().getFullYear() - el.buildYear);
+    const [totalAge, avgAge] = calc(ages);
+
+    console.log(`Our ${p.length} parks have an average of ${avgAge} years.`)
+
+    // Which park has more than 1000 trees
+
+    const index = p.map(el => el.numberOfTrees).findIndex(el => el >= 1000);
+    console.log(`${p[index].name} has more than 1000 trees.`)
+}
+
+function reportStreets(s) {
+    console.log('--------------STREETS REPORT---------------');
+
+    // Total average length of the town's streets
+    const [totalLength, avgLength] = calc(s.map(el => el.length));
+    console.log(`Our ${s.length} streets have a total length of ${totalLength} km, with an average of ${avgLength} km`);
+
+    // classify the sizes
+    s.forEach(el => el.classifyStreet());
+}
+
+reportPark(allParks);
+reportStreets(allStreets);
