@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42edcf32-3b35-4e95-bcab-9e34759b0446" name="Default Changelist" comment="" />
+    <list default="true" id="42edcf32-3b35-4e95-bcab-9e34759b0446" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../8-asynchronous-JS/starter/asynchronous.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../8-asynchronous-JS/starter/asynchronous.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -135,6 +137,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="43" width="1400" height="766" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20377085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

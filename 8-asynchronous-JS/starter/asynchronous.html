@@ -71,6 +71,8 @@
         })
     };
 
+    // ridding this consumption of promises in order to use async await from ES8
+    /*
     getIDs
         .then((ids) => {
             console.log(ids);
@@ -86,6 +88,22 @@
         .catch(error => {
             console.log(error);
         });
+        */
+
+    async function getRecipesAW() {
+        const IDs = await getIDs;
+        console.log(IDs);
+
+        const recipe = await getRecipe(IDs[2]);
+        console.log(recipe);
+
+        const related = await getRelated('Thando Mini');
+        console.log(related);
+
+        return recipe;
+    }
+     getRecipesAW().then(result => console.log(`${result} is the Best Ever`));
+
 
 </script>
 </body>
