@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42edcf32-3b35-4e95-bcab-9e34759b0446" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../7-ES6/starter/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../7-ES6/starter/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8-asynchronous-JS/starter/asynchronous.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../8-asynchronous-JS/starter/asynchronous.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
