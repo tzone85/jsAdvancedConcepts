@@ -37,7 +37,7 @@
     getRecipe();
 
     */
-
+/*
     const getIDs = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve([523, 883, 432, 947]);
@@ -70,7 +70,7 @@
             }, 1500, publisher)
         })
     };
-
+*/
     // ridding this consumption of promises in order to use async await from ES8
     /*
     getIDs
@@ -89,7 +89,7 @@
             console.log(error);
         });
         */
-
+/*
     async function getRecipesAW() {
         const IDs = await getIDs;
         console.log(IDs);
@@ -103,6 +103,49 @@
         return recipe;
     }
      getRecipesAW().then(result => console.log(`${result} is the Best Ever`));
+*/
+    // use fetch() from an api
+
+    function getWeather(woeid) {
+        fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`)
+            .then(result => {
+                console.log(result);
+                return result.json();
+            })
+            .then(data => {
+                // console.log(data);
+                const today = data.consolidated_weather[0];
+                console.log(`Temperatures today in ${data.title} stay between ${today.min_temp} and ${today.max_temp}.`);
+            })
+            .catch(err => console.log(err));
+    }
+
+    getWeather(2487956);
+    getWeather(44418);
+
+
+    async function getWeatherAW(woeid) {
+
+        try {
+            const result = await fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`);
+            const data = await result.json();
+            const tomorrow = data.consolidated_weather[1];
+            console.log(`Temperatures tomorrow in ${data.title} stay between ${tomorrow.min_temp} and ${tomorrow.max_temp}.`);
+
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    getWeatherAW(2487956);
+
+    let dataLondon;
+    getWeatherAW(44418).then(data => {
+        dataLondon = data;
+        console.log(dataLondon);
+    });
 
 
 </script>
